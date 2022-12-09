@@ -1,0 +1,38 @@
+@host = https://localhost:7028
+
+## Good request
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "firstName":"Xavier",
+    "lastName":"John",
+    "email":"someone@somewhere.com",
+    "password":"Amiko1232!"
+}
+
+###
+
+## Bad request (missing lastname)
+
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "firstName":"Xavier",
+    "lastName":"",
+    "email":"someone@somewhere.com",
+    "password":"Amiko1232!"
+}
+
+###
+
+## Bad request (missing first & lastname)
+
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "email":"someone@somewhere.com",
+    "password":"Amiko1232!"
+}
