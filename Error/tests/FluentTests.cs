@@ -9,7 +9,7 @@
         public void Will_return_failure_on_validation_error()
         {
             // Arrange
-            var expected = new ErrorList(Error.Validation("emailString", "Bad email address"));
+            var expected = new ErrorList(Error.Validation("error.validation", "Bad email address", "emailString"));
 
             // Act
             var result = EmailAddress.Create("Bad Email");

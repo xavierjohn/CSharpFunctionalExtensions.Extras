@@ -10,15 +10,15 @@ public class ErrorListTests
         var emailResultSuccess = EmailAddress.Create("xavier@somewhere.com");
         var stringResultSuccess = Result.Success<string, ErrorList>("one");
         var emailResultFailure = EmailAddress.Create("Bad Email");
-        var stringResultFailure = Result.Failure<string, ErrorList>(Error.Validation("FirstName", "firstName is required"));
+        var stringResultFailure = Result.Failure<string, ErrorList>(Error.Validation("error.validation", "firstName is required", "FirstName"));
 
         // Act
         var result = Result.Combine<ErrorList>(emailResultSuccess, stringResultSuccess, emailResultFailure, stringResultFailure);
 
         // Assert
         var expected = new ErrorList(
-            Error.Validation("FirstName", "firstName is required"),
-            Error.Validation("emailString", "Bad email address"));
+            Error.Validation("error.validation", "firstName is required", "FirstName"),
+            Error.Validation("error.validation", "Bad email address", "emailString"));
 
         result.IsFailure.Should().BeTrue();
         result.Error.HasErrors.Should().BeTrue();

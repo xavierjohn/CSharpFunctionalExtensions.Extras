@@ -27,8 +27,8 @@ public class Error : ValueObject
     public static Error NotFound(string code, string message) =>
         new NotFound(code, message);
 
-    public static Error Validation(string code, string message) =>
-       new Validation(code, message);
+    public static Error Validation(string code, string message, string fieldname) =>
+       new Validation(code, message, fieldname);
 
     public static Error Unauthorized(string code, string message) =>
         new Unauthorized(code, message);

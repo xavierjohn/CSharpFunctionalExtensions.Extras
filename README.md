@@ -20,6 +20,7 @@ The following error classes are available.
 - Conflict
 - NotFound
 - Unauthorized
+- Forbidden
 - Unexpected
 - Validation
 
@@ -69,10 +70,7 @@ public class User : Entity<Guid>
 
 # CSharpFunctionalExtensions.Asp
 
-ASP base controller for use with CSharpFunctionalExtensions
-
-This library converts CSharpFunctionalExtensions.Result to HTTP errors but using the base controller
-`CSharpFunctionalBase` and calling the method `MapToOkObjectResult`
+ToActionResult extension method converts Result<T, Error> from CsharpFunctionalExtensions to Asp.Net Core ActionResult.
 
 Run the sample program to try it out.
 
@@ -82,7 +80,7 @@ Example:
    public ActionResult<AuthenticationResult> Register(RegisterRequest request) =>
         Domain.User.Create(request.firstName, request.lastName, request.email, request.password)
              .Bind(user => Result.Success<AuthenticationResult, ErrorList>(new AuthenticationResult(user, "token")))
-             .Finally(authResult => MapToActionResult(authResult));
+             .ToActionResult(this);
 ```
 
 If a validation failure occurs, it will return a response like
