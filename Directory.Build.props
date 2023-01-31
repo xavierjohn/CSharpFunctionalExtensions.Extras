@@ -30,6 +30,12 @@
 		<!-- Enable linter -->
 	</PropertyGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+		<PackageReference Include="Nerdbank.GitVersioning" PrivateAssets="all" />
+		<PackageReference Include="DotNet.ReproducibleBuilds" PrivateAssets="All"/>
+	</ItemGroup>
+	
 	<PropertyGroup Condition=" '$(IsTestProject)' == 'false' ">
 		<RootNamespace>CSharpFunctionalExtensions.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<AssemblyName>CSharpFunctionalExtensions.$(MSBuildProjectName)</AssemblyName>
