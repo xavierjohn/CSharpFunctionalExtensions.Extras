@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<IsPackable>false</IsPackable>
-	</PropertyGroup>
-	
-	<ItemGroup>
-		<PackageReference Include="FluentValidation" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Error\src\Errors.csproj" />
-	</ItemGroup>
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Error\src\Errors.csproj" />
+  </ItemGroup>
 
 </Project>
